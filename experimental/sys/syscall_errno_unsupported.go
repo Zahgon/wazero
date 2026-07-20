@@ -2,6 +2,4 @@
 
 package sys
 
-func syscallToErrno(err error) (Errno, bool) {
-	return 0, false
-}
+func syscallToErrno(err error) (Errno, bool) { _ = "STUB: not implemented"; return *new(Errno), false }

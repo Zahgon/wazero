@@ -6,155 +6,112 @@ import (
 	"github.com/tetratelabs/wazero/sys"
 )
 
-// UnimplementedFS is an FS that returns ENOSYS for all functions,
-// This should be embedded to have forward compatible implementations.
 type UnimplementedFS struct{}
 
-// OpenFile implements FS.OpenFile
 func (UnimplementedFS) OpenFile(path string, flag Oflag, perm fs.FileMode) (File, Errno) {
-	return nil, ENOSYS
+	_ = "STUB: not implemented"
+	return *new(File), *new(Errno)
 }
 
-// Lstat implements FS.Lstat
 func (UnimplementedFS) Lstat(path string) (sys.Stat_t, Errno) {
-	return sys.Stat_t{}, ENOSYS
+	_ = "STUB: not implemented"
+	return *new(sys.Stat_t), *new(Errno)
 }
 
-// Stat implements FS.Stat
 func (UnimplementedFS) Stat(path string) (sys.Stat_t, Errno) {
-	return sys.Stat_t{}, ENOSYS
+	_ = "STUB: not implemented"
+	return *new(sys.Stat_t), *new(Errno)
 }
 
-// Readlink implements FS.Readlink
 func (UnimplementedFS) Readlink(path string) (string, Errno) {
-	return "", ENOSYS
+	_ = "STUB: not implemented"
+	return "", *new(Errno)
 }
 
-// Mkdir implements FS.Mkdir
 func (UnimplementedFS) Mkdir(path string, perm fs.FileMode) Errno {
-	return ENOSYS
+	_ = "STUB: not implemented"
+	return *new(Errno)
 }
 
-// Chmod implements FS.Chmod
 func (UnimplementedFS) Chmod(path string, perm fs.FileMode) Errno {
-	return ENOSYS
+	_ = "STUB: not implemented"
+	return *new(Errno)
 }
 
-// Rename implements FS.Rename
-func (UnimplementedFS) Rename(from, to string) Errno {
-	return ENOSYS
-}
+func (UnimplementedFS) Rename(from, to string) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Rmdir implements FS.Rmdir
-func (UnimplementedFS) Rmdir(path string) Errno {
-	return ENOSYS
-}
+func (UnimplementedFS) Rmdir(path string) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Link implements FS.Link
-func (UnimplementedFS) Link(_, _ string) Errno {
-	return ENOSYS
-}
+func (UnimplementedFS) Link(_, _ string) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Symlink implements FS.Symlink
-func (UnimplementedFS) Symlink(_, _ string) Errno {
-	return ENOSYS
-}
+func (UnimplementedFS) Symlink(_, _ string) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Unlink implements FS.Unlink
-func (UnimplementedFS) Unlink(path string) Errno {
-	return ENOSYS
-}
+func (UnimplementedFS) Unlink(path string) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Utimens implements FS.Utimens
 func (UnimplementedFS) Utimens(path string, atim, mtim int64) Errno {
-	return ENOSYS
+	_ = "STUB: not implemented"
+	return *new(Errno)
 }
 
-// UnimplementedFile is a File that returns ENOSYS for all functions,
-// except where no-op are otherwise documented.
-//
-// This should be embedded to have forward compatible implementations.
 type UnimplementedFile struct{}
 
-// Dev implements File.Dev
-func (UnimplementedFile) Dev() (uint64, Errno) {
-	return 0, 0
-}
+func (UnimplementedFile) Dev() (uint64, Errno) { _ = "STUB: not implemented"; return 0, *new(Errno) }
 
-// Ino implements File.Ino
 func (UnimplementedFile) Ino() (sys.Inode, Errno) {
-	return 0, 0
+	_ = "STUB: not implemented"
+	return *new(sys.Inode), *new(Errno)
 }
 
-// IsDir implements File.IsDir
 func (UnimplementedFile) IsDir() (bool, Errno) {
-	return false, 0
+	_ = "STUB: not implemented"
+	return false, *new(Errno)
 }
 
-// IsAppend implements File.IsAppend
-func (UnimplementedFile) IsAppend() bool {
-	return false
-}
+func (UnimplementedFile) IsAppend() bool { _ = "STUB: not implemented"; return false }
 
-// SetAppend implements File.SetAppend
-func (UnimplementedFile) SetAppend(bool) Errno {
-	return ENOSYS
-}
+func (UnimplementedFile) SetAppend(bool) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Stat implements File.Stat
 func (UnimplementedFile) Stat() (sys.Stat_t, Errno) {
-	return sys.Stat_t{}, ENOSYS
+	_ = "STUB: not implemented"
+	return *new(sys.Stat_t), *new(Errno)
 }
 
-// Read implements File.Read
 func (UnimplementedFile) Read([]byte) (int, Errno) {
-	return 0, ENOSYS
+	_ = "STUB: not implemented"
+	return 0, *new(Errno)
 }
 
-// Pread implements File.Pread
 func (UnimplementedFile) Pread([]byte, int64) (int, Errno) {
-	return 0, ENOSYS
+	_ = "STUB: not implemented"
+	return 0, *new(Errno)
 }
 
-// Seek implements File.Seek
 func (UnimplementedFile) Seek(int64, int) (int64, Errno) {
-	return 0, ENOSYS
+	_ = "STUB: not implemented"
+	return 0, *new(Errno)
 }
 
-// Readdir implements File.Readdir
 func (UnimplementedFile) Readdir(int) (dirents []Dirent, errno Errno) {
-	return nil, ENOSYS
+	_ = "STUB: not implemented"
+	return nil, *new(Errno)
 }
 
-// Write implements File.Write
 func (UnimplementedFile) Write([]byte) (int, Errno) {
-	return 0, ENOSYS
+	_ = "STUB: not implemented"
+	return 0, *new(Errno)
 }
 
-// Pwrite implements File.Pwrite
 func (UnimplementedFile) Pwrite([]byte, int64) (int, Errno) {
-	return 0, ENOSYS
+	_ = "STUB: not implemented"
+	return 0, *new(Errno)
 }
 
-// Truncate implements File.Truncate
-func (UnimplementedFile) Truncate(int64) Errno {
-	return ENOSYS
-}
+func (UnimplementedFile) Truncate(int64) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Sync implements File.Sync
-func (UnimplementedFile) Sync() Errno {
-	return 0 // not ENOSYS
-}
+func (UnimplementedFile) Sync() Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Datasync implements File.Datasync
-func (UnimplementedFile) Datasync() Errno {
-	return 0 // not ENOSYS
-}
+func (UnimplementedFile) Datasync() Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Utimens implements File.Utimens
-func (UnimplementedFile) Utimens(int64, int64) Errno {
-	return ENOSYS
-}
+func (UnimplementedFile) Utimens(int64, int64) Errno { _ = "STUB: not implemented"; return *new(Errno) }
 
-// Close implements File.Close
-func (UnimplementedFile) Close() (errno Errno) { return }
+func (UnimplementedFile) Close() (errno Errno) { _ = "STUB: not implemented"; return *new(Errno) }
